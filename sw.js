@@ -1,6 +1,7 @@
-const CACHE_NAME = 'geosistema-v4';
+const CACHE_NAME = 'geosistema-v5';
 const CACHE_STATIC = [
   './',
+  './home.html',
   './index.html',
   './Dashboard_obra.html',
   './Dashboard_Financeiro.html',

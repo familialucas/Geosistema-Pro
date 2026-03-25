@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>GeoSistema PRO</title>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#0d1117">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GeoSistema PRO">
+<link rel="apple-touch-icon" href="./assets/icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d1117;--surface:#161b22;--surface2:#1c2330;
+  --border:#30363d;--blue:#1a73e8;--teal:#0dcfb0;
+  --amber:#f5a623;--text:#e6edf3;--muted:#8b949e;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{
+  font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);
+  min-height:100vh;display:flex;flex-direction:column;
+}
+
+/* ── HEADER ── */
+header{
+  padding:24px 20px 20px;
+  background:linear-gradient(180deg,#161b22 0%,transparent 100%);
+  text-align:center;
+}
+.logo-wrap{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:4px;}
+.logo-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:linear-gradient(135deg,var(--blue),var(--teal));
+  display:grid;place-items:center;font-size:24px;flex-shrink:0;
+}
+.logo-name{font-family:'Outfit',sans-serif;font-size:24px;font-weight:800;letter-spacing:-.3px;}
+.logo-name span{color:var(--teal);}
+.logo-sub{font-size:12px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;font-weight:500;}
+
+/* ── SEÇÕES ── */
+main{flex:1;padding:8px 16px 32px;max-width:500px;margin:0 auto;width:100%;}
+
+.section-label{
+  font-size:10px;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:1.2px;
+  margin:22px 0 10px 2px;
+}
+
+/* ── CARDS ── */
+.card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:16px 18px;margin-bottom:10px;
+  display:flex;align-items:center;gap:14px;
+  text-decoration:none;color:var(--text);
+  transition:transform .15s,border-color .15s,background .15s;
+  -webkit-user-select:none;user-select:none;
+}
+.card:active{transform:scale(.97);background:var(--surface2);}
+.card-icon{
+  width:46px;height:46px;border-radius:12px;
+  display:grid;place-items:center;font-size:22px;flex-shrink:0;
+}
+.ic-blue  {background:rgba(26,115,232,.18);border:1px solid rgba(26,115,232,.3);}
+.ic-teal  {background:rgba(13,207,176,.18);border:1px solid rgba(13,207,176,.3);}
+.ic-amber {background:rgba(245,166,35,.18); border:1px solid rgba(245,166,35,.3);}
+.ic-green {background:rgba(46,160,67,.18);  border:1px solid rgba(46,160,67,.3);}
+.ic-purple{background:rgba(167,139,250,.18);border:1px solid rgba(167,139,250,.3);}
+.ic-gray  {background:rgba(139,148,158,.18);border:1px solid rgba(139,148,158,.3);}
+
+.card-body{flex:1;min-width:0;}
+.card-title{font-size:14px;font-weight:700;margin-bottom:2px;}
+.card-sub{font-size:12px;color:var(--muted);line-height:1.4;}
+.card-arrow{color:var(--muted);font-size:18px;flex-shrink:0;}
+
+/* Destaque no card principal */
+.card-featured{
+  border-color:rgba(26,115,232,.4);
+  background:linear-gradient(135deg,rgba(26,115,232,.1),rgba(13,207,176,.06));
+}
+.card-featured .card-title{color:var(--blue);}
+
+/* Badge de perfil */
+.badge{
+  display:inline-block;padding:2px 8px;border-radius:20px;
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;
+  margin-bottom:4px;
+}
+.badge-enc {background:rgba(26,115,232,.15);color:#93c5fd;}
+.badge-ges {background:rgba(13,207,176,.15);color:var(--teal);}
+.badge-vis {background:rgba(245,166,35,.15);color:var(--amber);}
+
+/* ── VERSÃO ── */
+footer{
+  text-align:center;padding:16px;
+  font-size:11px;color:var(--muted);
+  border-top:1px solid var(--border);
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-wrap">
+    <div class="logo-icon">🏗️</div>
+    <div>
+      <div class="logo-name">Geo<span>Sistema</span> PRO</div>
+    </div>
+  </div>
+  <div class="logo-sub">Simões Filho &amp; Lauro de Freitas · BA</div>
+</header>
+
+<main>
+
+  <!-- CAMPO (Encarregados) -->
+  <div class="section-label">📱 Campo — Encarregados</div>
+
+  <a href="./Dashboard_obra.html" class="card card-featured">
+    <div class="card-icon ic-blue">📓</div>
+    <div class="card-body">
+      <div class="badge badge-enc">Encarregado de Obra</div>
+      <div class="card-title">Diário de Obra</div>
+      <div class="card-sub">Registrar atividades, equipe, fotos e incidentes do dia</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a href="./Diario_Manutencao.html" class="card">
+    <div class="card-icon ic-teal">🔧</div>
+    <div class="card-body">
+      <div class="badge badge-enc">Encarregado de Manutenção</div>
+      <div class="card-title">Diário de Manutenção</div>
+      <div class="card-sub">Registrar serviços, materiais e ocorrências da edificação</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a href="./index.html" class="card">
+    <div class="card-icon ic-amber">🔍</div>
+    <div class="card-body">
+      <div class="badge badge-vis">Vistoriador</div>
+      <div class="card-title">Vistoria de Edificação</div>
+      <div class="card-sub">Formulário completo com geolocalização e fotos</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <!-- GESTÃO -->
+  <div class="section-label">🖥️ Gestão — Dashboards</div>
+
+  <a href="./Diario_de_Obra_v2.html" class="card">
+    <div class="card-icon ic-blue">🏗️</div>
+    <div class="card-body">
+      <div class="badge badge-ges">Gestor</div>
+      <div class="card-title">Dashboard de Obras</div>
+      <div class="card-sub">Cronograma, diários, incidentes, aprovações, galeria e escopo</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a href="./Dashboard_Financeiro.html" class="card">
+    <div class="card-icon ic-green">💰</div>
+    <div class="card-body">
+      <div class="badge badge-ges">Gestor</div>
+      <div class="card-title">Dashboard Financeiro</div>
+      <div class="card-sub">Orçamento SINAPI/SBC, Curva S e medições por capítulo</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <a href="./Dashboard_Manutencao.html" class="card">
+    <div class="card-icon ic-teal">📊</div>
+    <div class="card-body">
+      <div class="badge badge-ges">Gestor</div>
+      <div class="card-title">Dashboard Manutenção</div>
+      <div class="card-sub">Relatórios e indicadores das vistorias e manutenções</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+  <!-- FERRAMENTAS -->
+  <div class="section-label">🛠️ Ferramentas</div>
+
+  <a href="./visualizador.html" class="card">
+    <div class="card-icon ic-gray">📋</div>
+    <div class="card-body">
+      <div class="card-title">Visualizador de Relatórios</div>
+      <div class="card-sub">Gerar PDF a partir dos JSONs exportados</div>
+    </div>
+    <div class="card-arrow">›</div>
+  </a>
+
+</main>
+
+<footer>GeoSistema PRO · v3.0 · Simões Filho – BA</footer>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(r => console.log('SW registrado:', r.scope))
+        .catch(e => console.warn('SW falhou:', e));
+    });
+  }
+</script>
+</body>
+</html>
