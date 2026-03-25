@@ -131,23 +131,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
 
 @media(min-width:480px){.content{margin:0 auto;}.bottom-bar{max-width:480px;left:50%;transform:translateX(-50%);}}
 </style>
-  <!-- ══ PWA GeoSistema PRO ══ -->
-  <link rel="manifest" href="./manifest.json">
-  <meta name="theme-color" content="#1a73e8">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="GeoSistema PRO">
-  <link rel="apple-touch-icon" href="./assets/icon-192.png">
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-          .then(r => console.log('SW registrado:', r.scope))
-          .catch(e => console.warn('SW falhou:', e));
-      });
-    }
-  </script>
 </head>
 <body>
 <div class="toast" id="toast"></div>
@@ -163,7 +146,6 @@ input:focus,select:focus,textarea:focus{border-color:var(--blue);box-shadow:0 0 
         style="padding:5px 8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
                border-radius:7px;color:#fff;font-size:11px;font-family:'Outfit',sans-serif;
                outline:none;cursor:pointer;width:100%;">
-        <option>Carregando...</option>
       </select>
     </div>
     <div class="h-nav">
@@ -604,18 +586,17 @@ function svInc(){
 function svStep(){if(step===0)svGeral();if(step===1)svAtiv();if(step===4)svInc();}
 function avancar(){
   svStep();
-  if(step<STEPS-1){step++;function trocarObra(id){
+  if(step<STEPS-1){step++;render();window.scrollTo({top:0,behavior:'smooth'});}
+  else concluir();
+}
+
+function trocarObra(id){
   LS.set('geo_obra_ativa',id);
   PCT=loadPct();
   S.selecionadas=[];
   const obra=getObraInfo();
   if(obra) S.tipoObra=obra.tipo;
-  showT('Obra: '+((getObraInfo())||{}).nome);
-}
-
-popularObraSelect();
-render();window.scrollTo({top:0,behavior:'smooth'});}
-  else concluir();
+  showT('Obra: '+(getObraInfo()||{}).nome);
 }
 
 // ============================================================
@@ -727,6 +708,7 @@ function baixar(b,n){
   document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(u),5000);
 }
 
+popularObraSelect();
 render();
 </script>
 </body>
