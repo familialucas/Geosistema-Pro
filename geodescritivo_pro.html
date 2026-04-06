@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>GeoSistema PRO - Memorial Padrão Cartório</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <link rel="stylesheet" href="estilo.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="no-print">
+    <button onclick="window.location.href='index.html'" style="background:#6c757d; color:white;">← Voltar</button>
+    <button onclick="setTimeout(() => { window.print() }, 1000)" style="background:#007bff; color:white;">Gerar PDF Profissional</button>
+    <button onclick="exportarCSV_SIGEF()" style="background:#f39c12; color:white;">Planilha SIGEF (.csv)</button>
+</div>
+
+<div class="container-relatorio">
+    <div class="capa-projeto">
+        <p style="text-align: right;">Gerado em: <span id="dataGeracao"></span></p>
+        <h1>RELATÓRIO TÉCNICO</h1>
+        <div class="detalhes">
+            <h2 id="capaImovel">NOME DA PROPRIEDADE</h2>
+            <p id="capaProprietario">Proprietário: Nome Completo</p>
+            <p>Georreferenciamento de Imóvel Rural</p>
+        </div>
+        <div style="margin-bottom: 2cm;">
+            <p><strong>Responsável Técnico:</strong> <span id="capaRT">Engenheiro Responsável</span></p>
+            <p>Sistema Geodésico SIRGAS 2000</p>
+        </div>
+    </div>
+    <div class="page-break"></div>
+
+    <h3>1. MEMORIAL DESCRITIVO NARRATIVO</h3>
+    <div class="dados-imovel" style="border:1px solid #eee; padding:10px; margin-bottom:15px;">
+        <p><strong>IMÓVEL:</strong> <input type="text" id="inputImovel" placeholder="Nome do Imóvel"></p>
+        <p><strong>MATRÍCULA:</strong> <input type="text" placeholder="Nº da Matrícula"></p>
+        <p><strong>PROPRIETÁRIO:</strong> <input type="text" id="inputProp" placeholder="Nome do Proprietário"></p>
+    </div>
+    <div id="printMemorial">Carregando memorial...</div>
+    <div class="page-break"></div>
+
+    <h3>2. PLANTA DE SITUAÇÃO GEORREFERENCIADA</h3>
+    <div id="map"></div>
+    <p align="center">Área: <span id="areaFinal">0</span> m² | Perímetro: <span id="periFinal">0</span> m</p>
+    <div class="page-break"></div>
+
+    <h3>3. QUADRO DE VÉRTICES E CONFRONTANTES</h3>
+    <table id="tabelaAltimetria">
+        <thead>
+            <tr><th rowspan="2">Vértice</th><th colspan="2">Latitude (DMS/Dec)</th><th colspan="2">Longitude (DMS/Dec)</th><th rowspan="2">Alt (m)</th></tr>
+            <tr><th>DMS</th><th>Decimal</th><th>DMS</th><th>Decimal</th></tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <p><strong>Edição de Confrontantes:</strong></p>
+    <table id="tabelaConfrontantes"><tbody></tbody></table>
+    <div class="page-break"></div>
+
+    <h3>4. PERFIL ALTIMÉTRICO E VALIDAÇÃO</h3>
+    <canvas id="graficoRelevo" style="max-height: 300px; margin-bottom: 30px;"></canvas>
+    
+    <table id="tabelaQualidade">
+        <thead><tr><th>Vértice</th><th>Solução</th><th>RMS H (m)</th><th>RMS V (m)</th></tr></thead>
+        <tbody></tbody>
+    </table>
+
+    <div class="bloco-final" style="text-align:center; margin-top:50px;">
+        <div style="border-top: 1px solid #000; width: 300px; margin: 0 auto 5px auto;"></div>
+        <input type="text" id="inputRT" placeholder="Seu Nome Completo" style="text-align:center; width:80%; font-weight:bold;"><br>
+        <input type="text" placeholder="CREA/CAU/CFT" style="text-align:center; width:40%;"><br>
+        <input type="text" placeholder="ART/RRT Nº" style="text-align:center; width:40%;">
+    </div>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="geomemorial_pro.js"></script>
+</body>
+</html>
